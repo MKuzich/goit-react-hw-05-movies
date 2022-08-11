@@ -13,4 +13,5 @@ export const MovieCard = ({ title, poster, id }) => {
 MovieCard.propTypes = {
   title: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };

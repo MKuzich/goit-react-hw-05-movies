@@ -21,7 +21,7 @@ MoviesList.propTypes = {
     PropTypes.shape({
       original_title: PropTypes.string.isRequired,
       poster_path: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
     })
   ),
 };

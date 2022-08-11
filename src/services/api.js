@@ -10,7 +10,7 @@ export const getPopularMovies = async () => {
   const URL = `${BASE_URL}/trending/movie/day?${searchParams}`;
   try {
     const response = await axios.get(URL);
-    return response.results;
+    return response.data.results;
   } catch (error) {
     return error;
   }
@@ -24,7 +24,7 @@ export const getRequestedMovies = async request => {
   const URL = `${BASE_URL}/search/movie?${searchParams}`;
   try {
     const response = await axios.get(URL);
-    return response.results;
+    return response.data.results;
   } catch (error) {
     return error;
   }

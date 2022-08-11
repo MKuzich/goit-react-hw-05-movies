@@ -6,18 +6,16 @@ import { SearchBar } from '../../components/SearchBar/SearchBar';
 const Movies = () => {
   const [movies, setMovies] = useState(null);
   const [request, setRequest] = useState(null);
-  const [isFirstMount, setIsFirstMount] = useState(true);
 
   useEffect(() => {
-    if (isFirstMount) {
-      setIsFirstMount(false);
+    if (movies) {
       return;
     }
 
     getRequestedMovies(request)
       .then(r => setMovies(r))
       .catch(console.log);
-  }, [request, isFirstMount]);
+  }, [request, movies]);
 
   return (
     <main>
