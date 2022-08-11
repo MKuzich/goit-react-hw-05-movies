@@ -9,12 +9,11 @@ const Home = () => {
       getPopularMovies()
         .then(r => setMovies(r))
         .catch(console.log)
-        .finally(console.log(movies)),
     []
   );
   return (
     <section>
-      <h1></h1>
+      <h1>Trending today</h1>
       <ul>{movies.map(movie => console.log(movie))}</ul>
     </section>
   );
