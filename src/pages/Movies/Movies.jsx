@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getRequestedMovies } from 'services/api';
 import { MoviesList } from '../../components/MoviesList/MoviesList';
+import { SearchBar } from '../../components/SearchBar/SearchBar';
 
 const Movies = () => {
   const [movies, setMovies] = useState(null);
@@ -20,10 +21,7 @@ const Movies = () => {
 
   return (
     <main>
-      <form>
-        <input name="query" type="text" />
-        <button type="submit"></button>
-      </form>
+      <SearchBar onSubmit={setRequest} />
       <section>
         <h1>Movies for request {}</h1>
         <MoviesList movies={movies} />
