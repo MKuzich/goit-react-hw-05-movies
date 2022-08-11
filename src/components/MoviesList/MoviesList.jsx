@@ -4,15 +4,13 @@ import PropTypes from 'prop-types';
 export const MoviesList = ({ movies }) => {
   return (
     <ul>
-      {movies &&
-        movies.map(movie => {
-          const { original_title, poster_path, id } = movie;
-          return (
-            <li key={id}>
-              <MovieCard title={original_title} poster={poster_path} />
-            </li>
-          );
-        })}
+      {movies.map(({ original_title, poster_path, id }) => {
+        return (
+          <li key={id}>
+            <MovieCard title={original_title} poster={poster_path} id={id} />
+          </li>
+        );
+      })}
     </ul>
   );
 };
