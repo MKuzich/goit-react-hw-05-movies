@@ -10,15 +10,16 @@ const MovieDetails = ({ id }) => {
     setMovie(getMovieById(id));
   }, []);
 
+  const { poster_path, original_title, release_date, overview, genres } = movie;
   return (
     <section>
       <button type="button">Back</button>
       <img src="" alt="" />
       <h1></h1>
       <p></p>
-      <h2></h2>
+      <h2>Overview</h2>
       <p></p>
-      <h2></h2>
+      <h2>Genres</h2>
       <p></p>
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />

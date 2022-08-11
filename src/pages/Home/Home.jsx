@@ -7,9 +7,8 @@ const Home = () => {
 
   useEffect(() => {
     getPopularMovies()
-      .then(r => console.log(r))
-      .catch(console.log)
-      .finally(console.log(movies));
+      .then(r => setMovies(r))
+      .catch(console.log);
   }, []);
   return (
     <section>
