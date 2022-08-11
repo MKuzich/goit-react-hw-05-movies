@@ -8,7 +8,7 @@ const Home = () => {
     () =>
       getPopularMovies()
         .then(r => setMovies(r))
-        .catch(console.log)
+        .catch(console.log),
     []
   );
   return (
