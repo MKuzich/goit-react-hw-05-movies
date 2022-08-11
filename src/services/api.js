@@ -29,3 +29,16 @@ export const getRequestedMovies = async request => {
     return error;
   }
 };
+
+export const getMovieById = async id => {
+  const searchParams = new URLSearchParams({
+    api_key: API_KEY,
+  });
+  const URL = `${BASE_URL}/search/${id}?${searchParams}`;
+  try {
+    const response = await axios.get(URL);
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
