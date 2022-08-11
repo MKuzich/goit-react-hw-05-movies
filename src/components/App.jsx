@@ -7,10 +7,10 @@ const createAsyncComponent = path => lazy(() => import(path));
 
 const Home = createAsyncComponent('../pages/Home/Home');
 const Movies = createAsyncComponent('../pages/Movies/Movies');
-const MovieDetails = createAsyncComponent('../pages/MovieDetails/MovieDetails');
-const Cast = createAsyncComponent('./Cast/Cast');
-const Reviews = createAsyncComponent('./Reviews/Reviews');
-const Error = createAsyncComponent('../pages/Error/Error');
+// const MovieDetails = createAsyncComponent('../pages/MovieDetails/MovieDetails');
+// const Cast = createAsyncComponent('./Cast/Cast');
+// const Reviews = createAsyncComponent('./Reviews/Reviews');
+// const Error = createAsyncComponent('../pages/Error/Error');
 
 export const App = () => {
   return (
