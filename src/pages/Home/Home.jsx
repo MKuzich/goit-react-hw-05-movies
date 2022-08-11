@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <section>
       <h1>Trending today</h1>
-      <ul>{movies.map(movie => console.log(movie))}</ul>
+      <ul>{movies && movies.map(movie => console.log(movie))}</ul>
     </section>
   );
 };
