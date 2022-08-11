@@ -1,69 +1,32 @@
-import { useState, useEffect } from 'react';
-import { nanoid } from 'nanoid';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { Contacts } from 'components/Contacts/Contacts';
-import { ContactAddForm } from 'components/ContactAddForm/ContactAddForm';
-import { Filter } from 'components/Filter/Filter';
-import { Header, SecondHeader, Section } from './App.styled';
+import { GlobalStyle } from './GlobalStyle';
+import { Routes, Route } from 'react-router-dom';
+import { lazy } from 'react';
+import { SharedLayout } from 'components/SharedLayout/SharedLayout';
+
+const createAsyncComponent = path => lazy(() => import(path));
+
+const Home = createAsyncComponent('../pages/Home/Home');
+const Movies = createAsyncComponent('../pages/Movies/Movies');
+const MovieDetails = createAsyncComponent('../pages/MovieDetails/MovieDetails');
+const Cast = createAsyncComponent('./Cast/Cast');
+const Reviews = createAsyncComponent('./Reviews/Reviews');
+const Error = createAsyncComponent('../pages/Error/Error');
 
 export const App = () => {
-  const [contacts, setContacts] = useState([]);
-  const [filter, setFilter] = useState('');
-  const [isFirstMount, setIsFirstMount] = useState(true);
-
-  useEffect(() => {
-    const savedContacts = localStorage.getItem('contacts');
-    if (savedContacts) {
-      const parsedContacts = JSON.parse(savedContacts);
-      setContacts(parsedContacts);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (isFirstMount) {
-      setIsFirstMount(false);
-      return;
-    }
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts, isFirstMount]);
-
-  const deleteContact = e => {
-    setContacts(prevState =>
-      prevState.filter(contact => contact.id !== e.target.id)
-    );
-  };
-
-  const filterChange = e => {
-    setFilter(e.target.value);
-  };
-
-  const contactsChange = (name, number) => {
-    setContacts(prevState => {
-      if (
-        prevState.find(contact =>
-          contact.name.toLowerCase().includes(name.toLowerCase())
-        )
-      ) {
-        return Notify.warning(`${name} is already in contacts`);
-      }
-      return [...prevState, { name: name, number: number, id: nanoid() }];
-    });
-  };
-
   return (
     <>
-      <Section>
-        <Header>Phonebook</Header>
-
-        <ContactAddForm contactsChange={contactsChange} />
-        <SecondHeader>Contacts</SecondHeader>
-        <Filter filterChange={filterChange} />
-        <Contacts
-          contacts={contacts}
-          filter={filter}
-          deleteContact={deleteContact}
-        />
-      </Section>
+      <GlobalStyle />
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Home />} />
+          <Route path="/movies" element={<Movies />} />
+          {/* <Route path=":movieId" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route> */}
+          {/* <Route path="*" element={<Error />} /> */}
+        </Route>
+      </Routes>
     </>
   );
 };
