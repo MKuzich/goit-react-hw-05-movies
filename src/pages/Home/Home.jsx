@@ -1,8 +1,9 @@
 import { getPopularMovies } from '../../services/api';
 import { useState, useEffect } from 'react';
+import { MoviesList } from '../../components/MoviesList/MoviesList';
 
 const Home = () => {
-  const [movies, setMovies] = useState();
+  const [movies, setMovies] = useState(null);
 
   useEffect(
     () =>
@@ -14,7 +15,7 @@ const Home = () => {
   return (
     <section>
       <h1>Trending today</h1>
-      <ul>{movies && movies.map(movie => console.log(movie))}</ul>
+      <MoviesList movies={movies} />
     </section>
   );
 };
