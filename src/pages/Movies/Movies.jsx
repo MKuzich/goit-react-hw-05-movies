@@ -8,7 +8,7 @@ const Movies = () => {
   const [request, setRequest] = useState(null);
 
   useEffect(() => {
-    if (movies) {
+    if (request) {
       return;
     }
 

@@ -8,8 +8,6 @@ const Home = () => {
   useEffect(() => {
     getPopularMovies()
       .then(r => {
-        console.log('useEffect works!');
-        console.log(r);
         setMovies(r);
       })
       .catch(console.log);

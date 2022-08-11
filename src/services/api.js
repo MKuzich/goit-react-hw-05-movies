@@ -34,10 +34,10 @@ export const getMovieById = async id => {
   const searchParams = new URLSearchParams({
     api_key: API_KEY,
   });
-  const URL = `${BASE_URL}/search/${id}?${searchParams}`;
+  const URL = `${BASE_URL}/movie/${id}?${searchParams}`;
   try {
     const response = await axios.get(URL);
-    return response;
+    return response.data;
   } catch (error) {
     return error;
   }
