@@ -43,6 +43,7 @@ export const theme = {
     none: '0',
     small: '4px',
     normal: '8px',
+    large: '16px',
     round: '50%',
   },
   shadows: {
@@ -54,5 +55,6 @@ export const theme = {
     transform: 'transform 250ms cubic-bezier(0.4, 0, 0.2, 1)',
     boxShadow: 'box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1)',
     color: 'color 250ms cubic-bezier(0.4, 0, 0.2, 1)',
+    backgroundColor: 'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1)',
   },
 };

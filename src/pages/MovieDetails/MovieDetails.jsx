@@ -3,7 +3,15 @@ import { Suspense } from 'react';
 import { getMovieById } from 'services/api';
 import { useState, useEffect } from 'react';
 import { Section } from './MovieDetails.styled';
-import { BackLink, MoreLink } from './MovieDetails.styled';
+import {
+  BackLink,
+  MoreLink,
+  Poster,
+  Title,
+  SecondaryTitle,
+  Block,
+} from './MovieDetails.styled';
+import { Box } from 'components/Box';
 
 const Status = {
   idle: 'IDLE',
@@ -48,26 +56,40 @@ const MovieDetails = () => {
         {status === resolved && (
           <>
             <BackLink to={backLinkHref}>Back</BackLink>
-            <img
-              src={'https://image.tmdb.org/t/p/original/' + poster_path}
-              alt={original_title}
-            />
-            <h1>
-              {original_title} {`(${release_date.slice(0, 4)})`}
-            </h1>
-            <p>User Score: {vote_average * 10}%</p>
-            <h2>Overview</h2>
-            <p>{overview}</p>
-            <h2>Genres</h2>
-            <p>
-              {genres.reduce(
-                (allGenres, genre) => allGenres + ', ' + genre.name,
-                ''
-              )}
-            </p>
-            <h2>Additional information</h2>
-            <MoreLink to="cast">Cast</MoreLink>
-            <MoreLink to="reviews">Reviews</MoreLink>
+            <Box display="flex" gridGap={5}>
+              <Poster
+                src={'https://image.tmdb.org/t/p/original/' + poster_path}
+                alt={original_title}
+              />
+              <Box>
+                <Box display="flex" flexDirection="column" pl={4} pt={4}>
+                  <Title>
+                    {original_title} {`(${release_date.slice(0, 4)})`}
+                  </Title>
+                  <p>User Score: {vote_average * 10}%</p>
+                </Box>
+                <Block>
+                  <SecondaryTitle>Overview</SecondaryTitle>
+                  <p>{overview}</p>
+                </Block>
+                <Block>
+                  <SecondaryTitle>Genres</SecondaryTitle>
+                  <p>
+                    {genres
+                      .reduce((allGenres, genre) => {
+                        allGenres.push(genre.name);
+                        return allGenres;
+                      }, [])
+                      .join(', ')}
+                  </p>
+                </Block>
+                <Block>
+                  <SecondaryTitle>Additional information</SecondaryTitle>
+                  <MoreLink to="cast">Cast</MoreLink>
+                  <MoreLink to="reviews">Reviews</MoreLink>
+                </Block>
+              </Box>
+            </Box>
             <Suspense fallback={<div>Loading...</div>}>
               <Outlet />
             </Suspense>

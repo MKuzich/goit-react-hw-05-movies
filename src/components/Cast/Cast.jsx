@@ -2,6 +2,7 @@ import { getMovieCast } from 'services/api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ActorCard } from '../ActorCard/ActorCard';
+import { List, Card } from './Cast.styled';
 
 const Status = {
   idle: 'IDLE',
@@ -29,21 +30,24 @@ const Cast = () => {
       });
   }, [movieId]);
   return (
-    <ul>
-      {status === resolved &&
-        cast.map(actor => {
-          const { profile_path, name, character, id } = actor;
-          return (
-            <li key={id}>
-              <ActorCard
-                photo={profile_path}
-                name={name}
-                character={character}
-              />
-            </li>
-          );
-        })}
-    </ul>
+    <section>
+      <h2>Cast?</h2>
+      <List>
+        {status === resolved &&
+          cast.map(actor => {
+            const { profile_path, name, character, id } = actor;
+            return (
+              <Card key={id}>
+                <ActorCard
+                  photo={profile_path}
+                  name={name}
+                  character={character}
+                />
+              </Card>
+            );
+          })}
+      </List>
+    </section>
   );
 };
 
