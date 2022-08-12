@@ -1,6 +1,9 @@
 import { getPopularMovies } from '../../services/api';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createContext, useContext } from 'react';
 import { MoviesList } from '../../components/MoviesList/MoviesList';
+
+const HomeContext = createContext();
+export const useHome = () => useContext(HomeContext);
 
 const Home = () => {
   const [movies, setMovies] = useState(null);
@@ -15,7 +18,9 @@ const Home = () => {
   return (
     <section>
       <h1>Trending today</h1>
-      <MoviesList movies={movies} />
+      <HomeContext.Provider value={'movies/'}>
+        <MoviesList movies={movies} />
+      </HomeContext.Provider>
     </section>
   );
 };
