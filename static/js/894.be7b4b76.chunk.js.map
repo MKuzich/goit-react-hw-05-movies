@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/894.be7b4b76.chunk.js","mappings":"2JAQA,UARc,WACZ,OACE,+BACE","sources":["pages/Error/Error.jsx"],"sourcesContent":["const Error = () => {\n  return (\n    <>\n      <p>Sorry, we cannot find this page!</p>\n    </>\n  );\n};\n\nexport default Error;\n"],"names":[],"sourceRoot":""}
