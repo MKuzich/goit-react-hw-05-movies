@@ -50,7 +50,7 @@ const MovieDetails = () => {
             alt={original_title}
           />
           <h1>
-            {original_title} {`(${release_date.slice(0, 3)})`}
+            {original_title} {`(${release_date.slice(0, 4)})`}
           </h1>
           <p>User Score: {vote_average * 10}%</p>
           <h2>Overview</h2>
@@ -62,6 +62,9 @@ const MovieDetails = () => {
               ''
             )}
           </p>
+          <h2>Additional information</h2>
+          <Link to="cast">Cast</Link>
+          <Link to="reviews">Reviews</Link>
           <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
           </Suspense>

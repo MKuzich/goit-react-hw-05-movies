@@ -42,3 +42,29 @@ export const getMovieById = async id => {
     return error;
   }
 };
+
+export const getMovieCast = async id => {
+  const searchParams = new URLSearchParams({
+    api_key: API_KEY,
+  });
+  const URL = `${BASE_URL}/movie/${id}/credits?${searchParams}`;
+  try {
+    const response = await axios.get(URL);
+    return response.data.cast;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const getMovieReviews = async id => {
+  const searchParams = new URLSearchParams({
+    api_key: API_KEY,
+  });
+  const URL = `${BASE_URL}/movie/${id}/reviews?${searchParams}`;
+  try {
+    const response = await axios.get(URL);
+    return response.data.results;
+  } catch (error) {
+    return error;
+  }
+};
