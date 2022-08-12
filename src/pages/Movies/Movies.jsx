@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { getRequestedMovies } from 'services/api';
 import { MoviesList } from '../../components/MoviesList/MoviesList';
 import { SearchBar } from '../../components/SearchBar/SearchBar';
+import { Section, Title, AccentRequest } from './Movies.styled';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -19,15 +20,13 @@ const Movies = () => {
 
   return (
     <main>
-      <SearchBar onSubmit={setRequest} />
-      <section>
-        {movies && (
-          <>
-            <h1>Movies for request {}</h1>
-            <MoviesList movies={movies} />
-          </>
-        )}
-      </section>
+      <Section>
+        <SearchBar onSubmit={setRequest} />
+        <Title>
+          Movies for request <AccentRequest>{request}</AccentRequest>
+        </Title>
+        <MoviesList movies={movies} />
+      </Section>
     </main>
   );
 };

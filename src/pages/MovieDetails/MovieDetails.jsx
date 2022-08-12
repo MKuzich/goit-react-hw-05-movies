@@ -1,7 +1,9 @@
-import { Outlet, useParams, Link, useLocation } from 'react-router-dom';
+import { Outlet, useParams, useLocation } from 'react-router-dom';
 import { Suspense } from 'react';
 import { getMovieById } from 'services/api';
 import { useState, useEffect } from 'react';
+import { Section } from './MovieDetails.styled';
+import { BackLink, MoreLink } from './MovieDetails.styled';
 
 const Status = {
   idle: 'IDLE',
@@ -41,37 +43,39 @@ const MovieDetails = () => {
   } = movie;
 
   return (
-    <section>
-      {status === resolved && (
-        <>
-          <Link to={backLinkHref}>Back</Link>
-          <img
-            src={'https://image.tmdb.org/t/p/original/' + poster_path}
-            alt={original_title}
-          />
-          <h1>
-            {original_title} {`(${release_date.slice(0, 4)})`}
-          </h1>
-          <p>User Score: {vote_average * 10}%</p>
-          <h2>Overview</h2>
-          <p>{overview}</p>
-          <h2>Genres</h2>
-          <p>
-            {genres.reduce(
-              (allGenres, genre) => allGenres + ', ' + genre.name,
-              ''
-            )}
-          </p>
-          <h2>Additional information</h2>
-          <Link to="cast">Cast</Link>
-          <Link to="reviews">Reviews</Link>
-          <Suspense fallback={<div>Loading...</div>}>
-            <Outlet />
-          </Suspense>
-        </>
-      )}
-      {status === idle && <p>HI HI HI !!!</p>}
-    </section>
+    <main>
+      <Section>
+        {status === resolved && (
+          <>
+            <BackLink to={backLinkHref}>Back</BackLink>
+            <img
+              src={'https://image.tmdb.org/t/p/original/' + poster_path}
+              alt={original_title}
+            />
+            <h1>
+              {original_title} {`(${release_date.slice(0, 4)})`}
+            </h1>
+            <p>User Score: {vote_average * 10}%</p>
+            <h2>Overview</h2>
+            <p>{overview}</p>
+            <h2>Genres</h2>
+            <p>
+              {genres.reduce(
+                (allGenres, genre) => allGenres + ', ' + genre.name,
+                ''
+              )}
+            </p>
+            <h2>Additional information</h2>
+            <MoreLink to="cast">Cast</MoreLink>
+            <MoreLink to="reviews">Reviews</MoreLink>
+            <Suspense fallback={<div>Loading...</div>}>
+              <Outlet />
+            </Suspense>
+          </>
+        )}
+        {status === idle && <p>HI HI HI !!!</p>}
+      </Section>
+    </main>
   );
 };
 

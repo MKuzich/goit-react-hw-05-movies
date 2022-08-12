@@ -1,18 +1,19 @@
 import { MovieCard } from 'components/MovieCard/MovieCard';
 import PropTypes from 'prop-types';
+import { Card, List } from './MoviesList.styled';
 
 export const MoviesList = ({ movies }) => {
   return (
-    <ul>
+    <List>
       {movies &&
         movies.map(({ original_title, poster_path, id }) => {
           return (
-            <li key={id}>
+            <Card key={id}>
               <MovieCard title={original_title} poster={poster_path} id={id} />
-            </li>
+            </Card>
           );
         })}
-    </ul>
+    </List>
   );
 };
 

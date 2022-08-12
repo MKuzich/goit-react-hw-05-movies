@@ -45,4 +45,8 @@ h2,
 h3 {
   margin: 0;
 }
+
+a {
+  text-decoration: none;
+}
 `;
