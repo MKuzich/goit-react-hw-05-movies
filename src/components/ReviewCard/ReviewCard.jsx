@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
+import { Title, Text } from './ReviewCard.styled';
 
 export const ReviewCard = ({ author, content }) => {
   return (
     <>
-      <h3>{author}</h3>
-      <p>{content}</p>
+      <Title>{author}</Title>
+      <Text>{content}</Text>
     </>
   );
 };

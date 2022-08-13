@@ -2,7 +2,7 @@ import { getMovieCast } from 'services/api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ActorCard } from '../ActorCard/ActorCard';
-import { List, Card } from './Cast.styled';
+import { List, Card, Title } from './Cast.styled';
 
 const Status = {
   idle: 'IDLE',
@@ -31,7 +31,7 @@ const Cast = () => {
   }, [movieId]);
   return (
     <section>
-      <h2>Cast?</h2>
+      <Title>Cast</Title>
       <List>
         {status === resolved &&
           cast.map(actor => {

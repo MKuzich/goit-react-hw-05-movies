@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 export const Section = styled.section`
   margin-top: ${p => p.theme.space[9]}px;
+  padding-left: ${p => p.theme.space[5]}px;
+  padding-right: ${p => p.theme.space[5]}px;
+  padding-bottom: ${p => p.theme.space[5]}px;
   display: flex;
   flex-direction: column;
   align-items: center;

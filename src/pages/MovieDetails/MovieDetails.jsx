@@ -66,7 +66,7 @@ const MovieDetails = () => {
                   <Title>
                     {original_title} {`(${release_date.slice(0, 4)})`}
                   </Title>
-                  <p>User Score: {vote_average * 10}%</p>
+                  <p>User Score: {Math.round(vote_average * 10)}%</p>
                 </Box>
                 <Block>
                   <SecondaryTitle>Overview</SecondaryTitle>

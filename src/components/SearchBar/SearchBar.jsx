@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { AiOutlineSearch } from 'react-icons/ai';
+import { Form, Input, Button } from './SearchBar.styled';
 
 export const SearchBar = ({ onSubmit }) => {
   const handleSubmit = e => {
@@ -8,12 +9,12 @@ export const SearchBar = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input name="request" type="text" />
-      <button type="submit">
+    <Form onSubmit={handleSubmit}>
+      <Input name="request" type="text" />
+      <Button type="submit">
         <AiOutlineSearch />
-      </button>
-    </form>
+      </Button>
+    </Form>
   );
 };
 

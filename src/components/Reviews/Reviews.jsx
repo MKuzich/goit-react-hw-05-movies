@@ -2,6 +2,7 @@ import { getMovieReviews } from 'services/api';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ReviewCard } from 'components/ReviewCard/ReviewCard';
+import { Card, Title } from './Reviews.styled';
 
 const Status = {
   idle: 'IDLE',
@@ -30,17 +31,20 @@ const Reviews = () => {
   }, [movieId]);
 
   return (
-    <ul>
-      {status === resolved &&
-        reviews.map(review => {
-          const { author, content, id } = review;
-          return (
-            <li key={id}>
-              <ReviewCard author={author} content={content} />
-            </li>
-          );
-        })}
-    </ul>
+    <section>
+      <Title>Reviews</Title>
+      <ul>
+        {status === resolved &&
+          reviews.map(review => {
+            const { author, content, id } = review;
+            return (
+              <Card key={id}>
+                <ReviewCard author={author} content={content} />
+              </Card>
+            );
+          })}
+      </ul>
+    </section>
   );
 };
 

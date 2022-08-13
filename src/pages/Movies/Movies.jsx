@@ -22,10 +22,12 @@ const Movies = () => {
     <main>
       <Section>
         <SearchBar onSubmit={setRequest} />
-        <Title>
-          Movies for request <AccentRequest>{request}</AccentRequest>
-        </Title>
-        <MoviesList movies={movies} />
+        {request && (
+          <Title>
+            Movies for request <AccentRequest>{request}</AccentRequest>
+          </Title>
+        )}
+        {request && <MoviesList movies={movies} />}
       </Section>
     </main>
   );

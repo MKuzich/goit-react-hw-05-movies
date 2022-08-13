@@ -21,6 +21,7 @@ export const BackLink = styled(Link)`
   background-color: ${p => p.theme.colors.primary};
   transition: ${p => p.theme.transition.backgroundColor};
   color: ${p => p.theme.colors.white};
+  z-index: 1000;
   :hover,
   :focus {
     background-color: ${p => p.theme.colors.secondary};
